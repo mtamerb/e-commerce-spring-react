@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -21,7 +22,6 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-
     public ResponseEntity<ApiResponse> createCategory(@Valid @RequestBody Category category) {
         if (Objects.nonNull(categoryService.readCategory(category.getCategoryName()))) {
             return new ResponseEntity<>(new ApiResponse("Category already exists", false), HttpStatus.CONFLICT);
@@ -29,4 +29,22 @@ public class CategoryController {
         categoryService.createCategory(category);
         return new ResponseEntity<>(new ApiResponse("Category created successfully", true), HttpStatus.CREATED);
     }
+
+    @GetMapping("")
+    public ResponseEntity<List<Category>> getCategories(){
+        List<Category> body = categoryService.listCategories();
+        return new ResponseEntity<>(body, HttpStatus.OK);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
