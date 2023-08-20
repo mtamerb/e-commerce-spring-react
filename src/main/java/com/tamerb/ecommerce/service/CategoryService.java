@@ -11,14 +11,17 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     public CategoryService(CategoryRepository categoryRepository) {
+
         this.categoryRepository = categoryRepository;
     }
 
     public Category readCategory(String categoryName) {
+
         return categoryRepository.findByCategoryName(categoryName);
     }
 
     public void createCategory(Category category) {
+
         categoryRepository.save(category);
     }
 }

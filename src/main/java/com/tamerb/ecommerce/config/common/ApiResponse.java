@@ -1,4 +1,4 @@
-package com.tamerb.ecommerce.common;
+package com.tamerb.ecommerce.config.common;
 
 import java.time.LocalDateTime;
 

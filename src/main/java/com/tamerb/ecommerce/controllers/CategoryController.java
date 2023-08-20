@@ -1,6 +1,6 @@
 package com.tamerb.ecommerce.controllers;
 
-import com.tamerb.ecommerce.common.ApiResponse;
+import com.tamerb.ecommerce.config.common.ApiResponse;
 import com.tamerb.ecommerce.model.Category;
 import com.tamerb.ecommerce.service.CategoryService;
 import org.springframework.http.HttpStatus;
