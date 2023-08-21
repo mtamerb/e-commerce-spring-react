@@ -1,4 +1,4 @@
-package com.tamerb.ecommerce.config.common;
+package com.tamerb.ecommerce.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
