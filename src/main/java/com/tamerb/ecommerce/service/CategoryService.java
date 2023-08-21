@@ -2,7 +2,6 @@ package com.tamerb.ecommerce.service;
 
 import com.tamerb.ecommerce.model.Category;
 import com.tamerb.ecommerce.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +33,15 @@ public class CategoryService {
     }
 
     public void updateCategory(Integer categoryID, Category newCategory) {
-        Category category = categoryRepository.findById(categoryID).get();
-        category.setCategoryName(newCategory.getCategoryName());
-        category.setDescription(newCategory.getDescription());
-        category.setImageUrl(newCategory.getImageUrl());
-        categoryRepository.save(category);
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryID);
+        if (optionalCategory.isPresent()) {
+            Category category = optionalCategory.get();
+            category.setCategoryName(newCategory.getCategoryName());
+            category.setDescription(newCategory.getDescription());
+            category.setImageUrl(newCategory.getImageUrl());
+            categoryRepository.save(category);
+        } else {
+            throw new IllegalArgumentException("No category found with the specified categoryID.");
+        }
     }
 }
