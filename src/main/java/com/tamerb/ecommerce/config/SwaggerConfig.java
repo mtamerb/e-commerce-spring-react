@@ -18,7 +18,7 @@ public class SwaggerConfig {
                         .version("v0.0.1")
                         .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("e-Commerce Wiki Documentation")
+                        .description("e-Commerce repository")
                         .url("https://github.com/mtamerb"));
     }
 
