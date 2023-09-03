@@ -6,12 +6,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer productID;
 
     private @NotNull String name;
 
@@ -39,12 +38,12 @@ public class Product {
 
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getProductID() {
+        return productID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductID(Integer productID) {
+        this.productID = productID;
     }
 
     public String getName() {

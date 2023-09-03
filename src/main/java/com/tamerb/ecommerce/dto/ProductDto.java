@@ -4,7 +4,7 @@ import com.tamerb.ecommerce.model.Product;
 import jakarta.validation.constraints.NotNull;
 
 public class ProductDto {
-    private Integer id;
+    private Integer productID;
     private @NotNull String name;
     private @NotNull String imageURL;
     private @NotNull double price;
@@ -20,20 +20,20 @@ public class ProductDto {
     }
 
     public ProductDto(Product product) {
-        this.setId(product.getId());
+        this.setProductID(product.getProductID());
         this.setName(product.getName());
         this.setImageURL(product.getImageUrl());
         this.setDescription(product.getDescription());
         this.setPrice(product.getPrice());
-        this.setCategoryId(product.getCategory().getId());
+        this.setCategoryId(product.getCategory().getCategoryID());
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getProductID() {
+        return productID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductID(Integer productID) {
+        this.productID = productID;
     }
 
     public String getName() {

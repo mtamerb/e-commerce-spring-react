@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("api/product")
 public class ProductController {
 
 
@@ -38,13 +38,13 @@ public class ProductController {
         return new ResponseEntity<>(new ApiResponse("Product added successfully", true), HttpStatus.CREATED);
     }
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public ResponseEntity<List<ProductDto>> getProducts() {
         List<ProductDto> productDtos = productService.listProducts();
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/update/{productID}")
     public ResponseEntity<ApiResponse> updateProduct(@PathVariable("product_ID") Integer product_ID,
                                                      @RequestBody @Valid ProductDto productDto) {
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());

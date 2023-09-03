@@ -45,7 +45,7 @@ public class ProductService {
 
     public void updateProduct(Integer productId, ProductDto productDto, Category category) {
         Product product = getProductFromDto(productDto, category);
-        product.setId(productId);
+        product.setProductID(productId);
         productRepository.save(product);
     }
 }

@@ -1,17 +1,16 @@
 package com.tamerb.ecommerce.model;
 
 
-import jakarta.persistence.*;
+    import jakarta.persistence.*;
 
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "categories")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer categoryID;
 
     @NotBlank
     @Column(name = "category_name")
@@ -31,25 +30,25 @@ public class Category {
         this.description = description;
     }
 
-    public Category(@NotBlank Integer id, @NotBlank String categoryName,
+    public Category(@NotBlank Integer categoryID, @NotBlank String categoryName,
                     @NotBlank String description, @NotBlank String imageUrl) {
-        this.id = id;
+        this.categoryID = categoryID;
         this.categoryName = categoryName;
         this.description = description;
         this.imageUrl = imageUrl;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCategoryID() {
+        return categoryID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategoryID(Integer categoryID) {
+        this.categoryID = categoryID;
     }
 
     @Override
     public String toString() {
-        return "Category [id=" + id + ", categoryName=" + categoryName + ", description=" +
+        return "Category [id=" + categoryID + ", categoryName=" + categoryName + ", description=" +
                 description + ", imageUrl=" + imageUrl + "]";
     }
 

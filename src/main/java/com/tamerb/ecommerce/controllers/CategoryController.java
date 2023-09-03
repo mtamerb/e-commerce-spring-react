@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("api/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -30,7 +30,7 @@ public class CategoryController {
         return new ResponseEntity<>(new ApiResponse("Category created successfully", true), HttpStatus.CREATED);
     }
 
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Category>> getCategories(){
         List<Category> body = categoryService.listCategories();
         return new ResponseEntity<>(body, HttpStatus.OK);
