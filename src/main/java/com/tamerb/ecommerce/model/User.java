@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
