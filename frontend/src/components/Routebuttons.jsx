@@ -10,8 +10,8 @@ function Routebuttons() {
       </button>
 
       <button type="button" className="btn bg-light m-2 ">
-        <Link to="/login" className="text-decoration-none">
-          log in
+        <Link to="/register" className="text-decoration-none">
+          Register
         </Link>
       </button>
     </div>
