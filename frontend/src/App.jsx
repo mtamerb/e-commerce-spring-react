@@ -1,10 +1,11 @@
-import "./App.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import Registor from "./components/Register";
+import Register from "./components/Register.jsx";
+
 function App() {
   return (
     <>
-      <Registor />
+      <Register />
     </>
   );
 }
