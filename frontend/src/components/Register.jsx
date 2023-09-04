@@ -8,7 +8,7 @@ function Registor() {
         <h2 className="form-check-label">
           <b>Register</b>
         </h2>
-        <p className="text-center text-muted">Fill out this form</p>
+
         <form action="#" method="post" autoComplete="on">
           <div className="input-group mb-2">
             <div className="input-group mb-1">
