@@ -43,9 +43,9 @@ public class ProductService {
         return productDtos;
     }
 
-    public void updateProduct(Integer productId, ProductDto productDto, Category category) {
+    public void updateProduct(Long productId, ProductDto productDto, Category category) {
         Product product = getProductFromDto(productDto, category);
-        product.setProductID(productId);
+        product.setProductId(productId);
         productRepository.save(product);
     }
 }

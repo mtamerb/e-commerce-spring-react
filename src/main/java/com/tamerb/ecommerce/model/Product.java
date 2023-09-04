@@ -4,13 +4,18 @@ package com.tamerb.ecommerce.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 @Entity
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productID;
+    private Long productId;
 
     private @NotNull String name;
 
@@ -25,8 +30,8 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     Category category;
 
-    public Product(String name, String imageUrl, double price, String description, Category category) {
-        super();
+    public Product(Long productId, String name, String imageUrl, double price, String description, Category category) {
+        this.productId = productId;
         this.name = name;
         this.imageUrl = imageUrl;
         this.price = price;
@@ -38,52 +43,5 @@ public class Product {
 
     }
 
-    public Integer getProductID() {
-        return productID;
-    }
-
-    public void setProductID(Integer productID) {
-        this.productID = productID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 }

@@ -29,7 +29,7 @@ public class ProductController {
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
-        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
+        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
         if (optionalCategory.isEmpty()) {
             return new ResponseEntity<>(new ApiResponse("Category is invalid", false), HttpStatus.CONFLICT);
         }
@@ -45,14 +45,14 @@ public class ProductController {
     }
 
     @PostMapping("/update/{productID}")
-    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("product_ID") Integer product_ID,
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productId") Long productId,
                                                      @RequestBody @Valid ProductDto productDto) {
-        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
+        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
         if (optionalCategory.isEmpty()) {
             return new ResponseEntity<>(new ApiResponse("Category is invalid", false), HttpStatus.CONFLICT);
         }
         Category category = optionalCategory.get();
-        productService.updateProduct(product_ID, productDto, category);
+        productService.updateProduct(productId, productDto, category);
         return new ResponseEntity<>(new ApiResponse("Product updated successfully", true), HttpStatus.OK);
 
     }

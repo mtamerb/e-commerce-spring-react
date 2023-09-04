@@ -28,11 +28,11 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Optional<Category> readCategory(Integer categoryID) {
+    public Optional<Category> readCategory(Long categoryID) {
         return categoryRepository.findById(categoryID);
     }
 
-    public void updateCategory(Integer categoryID, Category newCategory) {
+    public void updateCategory(Long categoryID, Category newCategory) {
         Optional<Category> optionalCategory = categoryRepository.findById(categoryID);
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
