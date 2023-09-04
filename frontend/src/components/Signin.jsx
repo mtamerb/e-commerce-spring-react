@@ -35,7 +35,7 @@ function Signin() {
           onSubmit={handleSubmit}
           onReset={handleReset}
         >
-          <div className="input-group mb-2">
+          <div className="input-group mb-2       ">
             <span className="input-group-text">
               <AiOutlineUser />
             </span>
@@ -45,7 +45,9 @@ function Signin() {
               id="username"
               type="username"
               name="username"
-              className="form-control "
+              className={`form-control ${
+                errors.username ? "border border-danger border-3" : ""
+              }`}
               required
               placeholder="User Name"
             />
@@ -61,22 +63,23 @@ function Signin() {
               id="password"
               type="password"
               name="password"
-              className="form-control "
+              className={`form-control  ${
+                errors.password ? "border border-3 border-danger" : ""
+              }`}
               required
               onChange={handleChange}
               value={values.password}
               placeholder="Password"
             />
           </div>
-          {errors.password && (
-            <span className="text-danger">{errors.password}</span>
-          )}
+          {errors.password}
           <button
             id="button"
             type="submit"
             name="button"
             className="btn btn-info btn-block w-100"
             disabled={isSubmitting}
+            onBlur={() => console.log("blur")}
           >
             Sign in
           </button>
