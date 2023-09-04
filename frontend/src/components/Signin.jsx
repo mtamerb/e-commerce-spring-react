@@ -1,4 +1,4 @@
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
 import { Schema } from "../schema/signRegister";
@@ -21,13 +21,20 @@ function Signin() {
     },
     validationSchema: Schema,
   });
+  const typChange = () => {
+    if (document.getElementById("password").type === "password") {
+      document.getElementById("password").type = "text";
+    } else {
+      document.getElementById("password").type = "password";
+    }
+  };
   return (
     <div className="d-flex justify-content-center">
       <article className="col-12 col-md-6 card">
         <h2 className="form-check-label">
           <b>Sign in </b>
         </h2>
-        <p className="text-center text-muted">Fill out this form</p>
+
         <form
           action="#"
           method="post"
@@ -71,8 +78,13 @@ function Signin() {
               value={values.password}
               placeholder="Password"
             />
+            <span className="input-group-text ">
+              <AiOutlineEye onClick={() => typChange()} />
+            </span>
           </div>
-          {errors.password}
+          {errors.password && (
+            <span className="text-danger">{errors.password}</span>
+          )}
           <button
             id="button"
             type="submit"
