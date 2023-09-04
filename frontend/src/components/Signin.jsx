@@ -1,4 +1,4 @@
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
 import { Schema } from "../schema/signRegister";
@@ -21,13 +21,20 @@ function Signin() {
     },
     validationSchema: Schema,
   });
+  const typChange = () => {
+    if (document.getElementById("password").type === "password") {
+      document.getElementById("password").type = "text";
+    } else {
+      document.getElementById("password").type = "password";
+    }
+  };
   return (
     <div className="d-flex justify-content-center">
       <article className="col-12 col-md-6 card">
         <h2 className="form-check-label">
           <b>Sign in </b>
         </h2>
-        <p className="text-center text-muted">Fill out this form</p>
+
         <form
           action="#"
           method="post"
@@ -35,7 +42,7 @@ function Signin() {
           onSubmit={handleSubmit}
           onReset={handleReset}
         >
-          <div className="input-group mb-2">
+          <div className="input-group mb-2       ">
             <span className="input-group-text">
               <AiOutlineUser />
             </span>
@@ -45,7 +52,9 @@ function Signin() {
               id="username"
               type="username"
               name="username"
-              className="form-control "
+              className={`form-control ${
+                errors.username ? "border border-danger border-3" : ""
+              }`}
               required
               placeholder="User Name"
             />
@@ -61,12 +70,17 @@ function Signin() {
               id="password"
               type="password"
               name="password"
-              className="form-control "
+              className={`form-control  ${
+                errors.password ? "border border-3 border-danger" : ""
+              }`}
               required
               onChange={handleChange}
               value={values.password}
               placeholder="Password"
             />
+            <span className="input-group-text ">
+              <AiOutlineEye onClick={() => typChange()} />
+            </span>
           </div>
           {errors.password && (
             <span className="text-danger">{errors.password}</span>
@@ -77,6 +91,7 @@ function Signin() {
             name="button"
             className="btn btn-info btn-block w-100"
             disabled={isSubmitting}
+            onBlur={() => console.log("blur")}
           >
             Sign in
           </button>
