@@ -1,7 +1,7 @@
 import "../sass/register.sass";
 import { AiOutlineUser, AiOutlineMail, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { typChange, Schema } from "../schema/signRegister";
+import { typChange, registerSchema } from "../schema/signRegister";
 import { useFormik } from "formik";
 function Registor() {
   const {
@@ -21,9 +21,13 @@ function Registor() {
     },
     onSubmit: (values, action) => {
       action.resetForm();
-      console.log(values);
+      fetch("https://64f5eb292b07270f705de61f.mockapi.io/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
     },
-    validationSchema: Schema,
+    validationSchema: registerSchema,
   });
   return (
     <div className="d-flex justify-content-center">
@@ -68,7 +72,7 @@ function Registor() {
             </span>
             <input
               id="username"
-              type="username"
+              type="text"
               name="username"
               className={`form-control ${
                 errors.username ? "border border-danger border-3" : ""

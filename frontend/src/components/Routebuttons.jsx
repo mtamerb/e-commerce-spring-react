@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 function Routebuttons() {
-  console.log("rendered");
   return (
     <div className=" d-flex">
       <div>

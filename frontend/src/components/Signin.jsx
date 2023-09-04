@@ -1,26 +1,21 @@
 import { AiOutlineUser, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
-import { Schema, typChange } from "../schema/signRegister";
+import { signSchema, typChange } from "../schema/signRegister";
 function Signin() {
-  const {
-    values,
-    errors,
-    handleChange,
-    handleReset,
-    handleSubmit,
-    isSubmitting,
-  } = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    onSubmit: (values, action) => {
-      action.resetForm();
-      console.log(values);
-    },
-    validationSchema: Schema,
-  });
+  const { values, errors, handleChange, handleReset, handleSubmit } = useFormik(
+    {
+      initialValues: {
+        username: "",
+        password: "",
+      },
+      onSubmit: (values, action) => {
+        console.log(values);
+        action.resetForm();
+      },
+      validationSchema: signSchema,
+    }
+  );
 
   return (
     <div className="d-flex justify-content-center">
@@ -44,7 +39,7 @@ function Signin() {
               onChange={handleChange}
               value={values.username}
               id="username"
-              type="username"
+              type="text"
               name="username"
               className={`form-control ${
                 errors.username ? "border border-danger border-3" : ""
@@ -84,8 +79,7 @@ function Signin() {
             type="submit"
             name="button"
             className="btn btn-info btn-block w-100"
-            disabled={isSubmitting}
-            onBlur={() => console.log("blur")}
+            onClick={() => console.log("bastı")}
           >
             Sign in
           </button>
