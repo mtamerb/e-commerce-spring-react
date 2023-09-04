@@ -1,27 +1,63 @@
 import "../sass/register.sass";
-import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineMail, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { typChange, Schema } from "../schema/signRegister";
+import { useFormik } from "formik";
 function Registor() {
+  const {
+    values,
+    errors,
+    handleChange,
+    handleReset,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+    },
+    onSubmit: (values, action) => {
+      action.resetForm();
+      console.log(values);
+    },
+    validationSchema: Schema,
+  });
   return (
     <div className="d-flex justify-content-center">
       <article className="col-12 col-md-6 card">
         <h2 className="form-check-label">
           <b>Register</b>
         </h2>
-
-        <form action="#" method="post" autoComplete="on">
+        <form
+          action="#"
+          method="post"
+          autoComplete="on"
+          onSubmit={handleSubmit}
+          onReset={handleReset}
+        >
           <div className="input-group mb-2">
             <div className="input-group mb-1">
               <input
                 type="text"
-                className="form-control mr-2"
+                className="form-control mr-2 "
                 required
+                name="firstName"
+                id="firstName"
                 placeholder="First Name"
+                value={values.firstName}
+                onChange={handleChange}
               />
               <input
                 type="text"
                 className="form-control"
                 required
+                id="lastName"
+                name="lastName"
+                values={values.lastName}
+                onChange={handleChange}
                 placeholder="Last Name"
               />
             </div>
@@ -34,8 +70,12 @@ function Registor() {
               id="username"
               type="username"
               name="username"
-              className="form-control "
+              className={`form-control ${
+                errors.username ? "border border-danger border-3" : ""
+              }`}
+              value={values.username}
               required
+              onChange={handleChange}
               placeholder="User Name"
             />
           </div>
@@ -45,10 +85,14 @@ function Registor() {
             </span>
             <input
               id="email"
-              type="text"
-              name="button"
-              className="form-control "
+              type="email"
+              name="email"
+              className={`form-control ${
+                errors.email ? "border border-danger border-3" : ""
+              }`}
               required
+              value={values.email}
+              onChange={handleChange}
               placeholder="E-mail Address"
             />
           </div>
@@ -60,10 +104,17 @@ function Registor() {
               id="password"
               type="password"
               name="password"
-              className="form-control "
+              className={`form-control ${
+                errors.password ? "border border-danger border-3" : ""
+              }`}
               required
+              value={values.password}
+              onChange={handleChange}
               placeholder="Password"
             />
+            <span className="input-group-text ">
+              <AiOutlineEye onClick={() => typChange()} />
+            </span>
           </div>
           <div className="form-check mt-2 mb-2">
             <input
@@ -71,23 +122,24 @@ function Registor() {
               name="checkbox"
               type="checkbox"
               defaultValue
+              required
               id="agreeCheckbox"
             />
             <label className="form-check-chekbox" htmlFor="agreeCheckbox">
-              I agree with the <b>Terms and Conditions</b> and the{" "}
+              I agree with the <b>Terms and Conditions</b> and the
               <b>Privacy Policy</b>
             </label>
           </div>
-          <div className="btn btn-info btn-block w-100">
-            <button
-              id="button"
-              type="submit"
-              name="button"
-              className="btn btn-info"
-            >
-              Create Account
-            </button>
-          </div>
+
+          <button
+            id="button"
+            type="submit"
+            name="button"
+            className="btn btn-info btn-block w-100"
+            disabled={isSubmitting}
+          >
+            Create Account
+          </button>
         </form>
       </article>
     </div>

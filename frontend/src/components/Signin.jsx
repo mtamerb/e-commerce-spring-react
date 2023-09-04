@@ -1,7 +1,7 @@
 import { AiOutlineUser, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
-import { Schema } from "../schema/signRegister";
+import { Schema, typChange } from "../schema/signRegister";
 function Signin() {
   const {
     values,
@@ -21,13 +21,7 @@ function Signin() {
     },
     validationSchema: Schema,
   });
-  const typChange = () => {
-    if (document.getElementById("password").type === "password") {
-      document.getElementById("password").type = "text";
-    } else {
-      document.getElementById("password").type = "password";
-    }
-  };
+
   return (
     <div className="d-flex justify-content-center">
       <article className="col-12 col-md-6 card">
