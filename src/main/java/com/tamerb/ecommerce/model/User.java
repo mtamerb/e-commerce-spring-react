@@ -1,7 +1,9 @@
 package com.tamerb.ecommerce.model;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,9 @@ import java.util.Collection;
 
 @Getter
 @Setter
+
+@EqualsAndHashCode
+@NoArgsConstructor
 
 @Entity
 @Table(name = "users")
@@ -37,15 +42,21 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
-    public User() {
-    }
 
-    public User(@NotBlank String firstName, @NotBlank String lastName, @NotBlank String email, @NotBlank String password) {
+    private Boolean locked;
+
+    private Boolean enabled;
+
+    public User(String firstName, String lastName, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.userRole = userRole;
+        this.locked = locked;
+        this.enabled = enabled;
     }
 
     @Override
@@ -77,4 +88,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+
 }
