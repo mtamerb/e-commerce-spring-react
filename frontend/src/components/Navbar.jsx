@@ -25,10 +25,10 @@ function Routebuttons() {
             >
               Categories
             </button>
-            <ul className="dropdown-menu text-info">
-              <li>eşya</li>
-              <li>ayyakkabı</li>
-              <li>teknoloji</li>
+            <ul className="dropdown-menu text-info ">
+              <li className="m-2">eşya</li>
+              <li className="m-2">ayyakkabı</li>
+              <li className="m-2">teknoloji</li>
             </ul>
           </div>
         </div>
@@ -54,6 +54,11 @@ function Routebuttons() {
             </button>
           </div>
         )}
+      </div>
+      <div className="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </nav>
   );

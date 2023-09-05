@@ -21,11 +21,7 @@ function Registor() {
     },
     onSubmit: (values, action) => {
       action.resetForm();
-      fetch("https://64f5eb292b07270f705de61f.mockapi.io/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      console.log(values);
     },
     validationSchema: registerSchema,
   });
@@ -60,7 +56,7 @@ function Registor() {
                 required
                 id="lastName"
                 name="lastName"
-                values={values.lastName}
+                value={values.lastName}
                 onChange={handleChange}
                 placeholder="Last Name"
               />

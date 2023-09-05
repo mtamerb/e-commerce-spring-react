@@ -9,7 +9,7 @@ function Acount() {
       >
         Acount
       </button>
-      <ul className="dropdown-menu text-info">
+      <ul className="dropdown-menu text-info ">
         <li>profile</li>
         <li>basket</li>
         <li>settings</li>
