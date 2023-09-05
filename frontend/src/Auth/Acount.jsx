@@ -1,9 +1,9 @@
 function Acount() {
   return (
-    <div className="btn group">
+    <div className="btn group p-0">
       <button
         type="button"
-        className="btn  m-2  text-info"
+        className="btn   text-info"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >

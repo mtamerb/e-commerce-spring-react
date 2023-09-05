@@ -47,9 +47,15 @@ body
   width: 40px
   height: 40px
   background-color: red
-.line
-  width: 40px
-  height: 2px
-  color: black
+  span
+    width: 40px
+    height: 2px
+    color: black
 
-  
+$layout-breakpoint-small: 377px
+
+@media (max-width: $layout-breakpoint-small)
+  .auth
+    width: 100%
+    display: flex
+    justify-content: center
