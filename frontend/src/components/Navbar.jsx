@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Acount from "../Auth/Acount";
 
-const hesap = false;
+const hesap = true;
 function Routebuttons() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -64,7 +64,10 @@ function Routebuttons() {
             <Acount />
           ) : (
             <div className="text-center auth">
-              <button type="button" className="btn text-info m-2  ">
+              <button
+                type="button"
+                className="btn text-info p-0 text-start me-2  "
+              >
                 <Link
                   to="/auth/register"
                   className="text-decoration-none text-info"
@@ -72,7 +75,10 @@ function Routebuttons() {
                   Register
                 </Link>
               </button>
-              <button type="button" className="btn text-info m-2 text-left ">
+              <button
+                type="button"
+                className="btn text-info  text-left  text-start p-0"
+              >
                 <Link
                   to="/auth/signin"
                   className="text-decoration-none text-info"
