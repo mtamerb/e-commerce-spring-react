@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Acount from "../Auth/Acount";
 
-const hesap = true;
+const hesap = false;
 function Routebuttons() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -45,17 +45,17 @@ function Routebuttons() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item text-info" href="#">
                     eşya
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item text-info" href="#">
                     ayyakkabı
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item">teknoloji</a>
+                  <a className="dropdown-item text-info">teknoloji</a>
                 </li>
               </ul>
             </li>
@@ -63,7 +63,7 @@ function Routebuttons() {
           {hesap ? (
             <Acount />
           ) : (
-            <div className="text-center">
+            <div className="text-center auth">
               <button type="button" className="btn text-info m-2  ">
                 <Link
                   to="/auth/register"
@@ -72,7 +72,7 @@ function Routebuttons() {
                   Register
                 </Link>
               </button>
-              <button type="button" className="btn text-info m-2 ">
+              <button type="button" className="btn text-info m-2 text-left ">
                 <Link
                   to="/auth/signin"
                   className="text-decoration-none text-info"
