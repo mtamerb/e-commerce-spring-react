@@ -1,59 +1,94 @@
 import { Link } from "react-router-dom";
 import Acount from "../Auth/Acount";
-const hesap = false;
+
+const hesap = true;
 function Routebuttons() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <div>
-          <button type="button" className="btn text-info m-2 ">
-            <Link to="/" className="text-decoration-none text-info">
-              Main
-            </Link>
-          </button>
-          <button type="button" className="btn text-info m-2 ">
-            <Link to="/about" className="text-decoration-none text-info">
-              About
-            </Link>
-          </button>
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn  m-2 dropdown-toggle text-info"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Categories
-            </button>
-            <ul className="dropdown-menu text-info">
-              <li>eşya</li>
-              <li>ayyakkabı</li>
-              <li>teknoloji</li>
-            </ul>
-          </div>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link text-info" aria-current="page" to="/">
+                main
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link text-info"
+                aria-current="page"
+                to="/about"
+              >
+                about
+              </Link>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle text-info"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <a className="dropdown-item text-info" href="#">
+                    eşya
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item text-info" href="#">
+                    ayyakkabı
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item text-info">teknoloji</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {hesap ? (
+            <Acount />
+          ) : (
+            <div className="text-center auth">
+              <button
+                type="button"
+                className="btn text-info p-0 text-start me-2  "
+              >
+                <Link
+                  to="/auth/register"
+                  className="text-decoration-none text-info"
+                >
+                  Register
+                </Link>
+              </button>
+              <button
+                type="button"
+                className="btn text-info  text-left  text-start p-0"
+              >
+                <Link
+                  to="/auth/signin"
+                  className="text-decoration-none text-info"
+                >
+                  Sign in
+                </Link>
+              </button>
+            </div>
+          )}
         </div>
-        {hesap ? (
-          <Acount />
-        ) : (
-          <div>
-            <button type="button" className="btn text-info m-2 ">
-              <Link
-                to="/auth/register"
-                className="text-decoration-none text-info"
-              >
-                Register
-              </Link>
-            </button>
-            <button type="button" className="btn text-info m-2 ">
-              <Link
-                to="/auth/signin"
-                className="text-decoration-none text-info"
-              >
-                Sign in
-              </Link>
-            </button>
-          </div>
-        )}
       </div>
     </nav>
   );

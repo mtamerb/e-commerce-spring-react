@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist//js/bootstrap.bundle.js";
 import Routebuttons from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
 import Signin from "./Auth/Signin.jsx";

@@ -42,3 +42,20 @@ body
   padding: 1.5rem
   border-style: solid
   border-color: #ccc
+
+.hamburger
+  width: 40px
+  height: 40px
+  background-color: red
+  span
+    width: 40px
+    height: 2px
+    color: black
+
+$layout-breakpoint-small: 991px
+
+@media (max-width: $layout-breakpoint-small)
+  .auth
+    display: flex
+    flex-direction: column
+
