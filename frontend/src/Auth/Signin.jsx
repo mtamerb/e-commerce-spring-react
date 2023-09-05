@@ -18,11 +18,9 @@ function Signin() {
   );
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center  mt-5">
       <article className="col-12 col-md-6 card">
-        <h2 className="form-check-label">
-          <b>Sign in </b>
-        </h2>
+        <h2 className="form-check-label text-center">Sign in</h2>
 
         <form
           action="#"
