@@ -1,0 +1,50 @@
+import { TbMessages } from "react-icons/tb";
+import { Link } from "react-router-dom";
+function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <a className="navbar-brand text-info" href="#">
+          Admin
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/adminmain/users" className="nav-link text-info">
+                Users
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-info" href="#">
+                Categories
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-info" href="#">
+                Products
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-info" aria-disabled="true">
+                <TbMessages />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;
