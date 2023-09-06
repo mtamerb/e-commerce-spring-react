@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { SlBasket } from "react-icons/sl";
 import Acount from "../Auth/Acount";
-
-const hesap = true;
+const hesap = false;
 function Routebuttons() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -59,6 +59,9 @@ function Routebuttons() {
                 </li>
               </ul>
             </li>
+            <li className="nav-item dropdown">
+              <SlBasket className="text-info w-100 h-100 " />
+            </li>
           </ul>
           {hesap ? (
             <Acount />
@@ -68,10 +71,7 @@ function Routebuttons() {
                 type="button"
                 className="btn text-info p-0 text-start me-2  "
               >
-                <Link
-                  to="/auth/register"
-                  className="text-decoration-none text-info"
-                >
+                <Link to="/register" className="text-decoration-none text-info">
                   Register
                 </Link>
               </button>
@@ -79,10 +79,7 @@ function Routebuttons() {
                 type="button"
                 className="btn text-info  text-left  text-start p-0"
               >
-                <Link
-                  to="/auth/signin"
-                  className="text-decoration-none text-info"
-                >
+                <Link to="/signin" className="text-decoration-none text-info">
                   Sign in
                 </Link>
               </button>

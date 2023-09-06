@@ -31,6 +31,7 @@ function Registor() {
         <h2 className="form-check-label">
           <b>Register</b>
         </h2>
+
         <form
           action="#"
           method="post"
@@ -130,16 +131,17 @@ function Registor() {
               <b>Privacy Policy</b>
             </label>
           </div>
-
-          <button
-            id="button"
-            type="submit"
-            name="button"
-            className="btn btn-info btn-block w-100"
-            disabled={isSubmitting}
-          >
-            Create Account
-          </button>
+          <div className="d-flex align-items-center">
+            <button
+              id="button"
+              type="submit"
+              name="button"
+              className="btn btn-info btn-block w-100"
+              disabled={isSubmitting}
+            >
+              Create Account
+            </button>
+          </div>
         </form>
       </article>
     </div>
