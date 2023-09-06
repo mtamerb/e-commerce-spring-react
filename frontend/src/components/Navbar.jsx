@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SlBasket } from "react-icons/sl";
 import Acount from "../Auth/Acount";
 const hesap = false;
 function Routebuttons() {
@@ -57,6 +58,9 @@ function Routebuttons() {
                   <a className="dropdown-item text-info">teknoloji</a>
                 </li>
               </ul>
+            </li>
+            <li className="nav-item dropdown">
+              <SlBasket className="text-info w-100 h-100 " />
             </li>
           </ul>
           {hesap ? (
