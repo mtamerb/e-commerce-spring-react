@@ -4,9 +4,9 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand text-info" href="#">
+        <Link to="/adminmain" className="nav-link text-info">
           Admin
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -31,9 +31,9 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-info" href="#">
+              <Link to="products" className="nav-link text-info">
                 Products
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link text-info" aria-disabled="true">
@@ -46,5 +46,4 @@ function Navbar() {
     </nav>
   );
 }
-
 export default Navbar;
