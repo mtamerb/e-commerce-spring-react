@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Acount from "../Auth/Acount";
-
 const hesap = false;
 function Routebuttons() {
   return (
@@ -68,10 +67,7 @@ function Routebuttons() {
                 type="button"
                 className="btn text-info p-0 text-start me-2  "
               >
-                <Link
-                  to="/auth/register"
-                  className="text-decoration-none text-info"
-                >
+                <Link to="/register" className="text-decoration-none text-info">
                   Register
                 </Link>
               </button>
@@ -79,10 +75,7 @@ function Routebuttons() {
                 type="button"
                 className="btn text-info  text-left  text-start p-0"
               >
-                <Link
-                  to="/auth/signin"
-                  className="text-decoration-none text-info"
-                >
+                <Link to="/signin" className="text-decoration-none text-info">
                   Sign in
                 </Link>
               </button>

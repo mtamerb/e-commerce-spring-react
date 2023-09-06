@@ -21,14 +21,14 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/adminmain/users" className="nav-link text-info">
+              <Link to="users" className="nav-link text-info">
                 Users
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-info" href="#">
+              <Link to="categories" className="nav-link text-info">
                 Categories
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link text-info" href="#">

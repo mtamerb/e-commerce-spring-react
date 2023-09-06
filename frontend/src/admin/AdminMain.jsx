@@ -5,6 +5,7 @@ function AdminMain() {
     <div>
       <Navbar />
       <Outlet />
+      hamza
     </div>
   );
 }
