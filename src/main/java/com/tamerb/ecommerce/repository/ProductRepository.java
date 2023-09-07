@@ -1,6 +1,6 @@
 package com.tamerb.ecommerce.repository;
 
-import com.tamerb.ecommerce.model.Product;
+import com.tamerb.ecommerce.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

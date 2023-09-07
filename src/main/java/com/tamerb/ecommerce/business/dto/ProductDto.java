@@ -1,6 +1,6 @@
-package com.tamerb.ecommerce.dto;
+package com.tamerb.ecommerce.business.dto;
 
-import com.tamerb.ecommerce.model.Product;
+import com.tamerb.ecommerce.entities.Product;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;

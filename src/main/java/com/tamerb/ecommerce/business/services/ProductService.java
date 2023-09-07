@@ -1,8 +1,8 @@
-package com.tamerb.ecommerce.service;
+package com.tamerb.ecommerce.business.services;
 
-import com.tamerb.ecommerce.dto.ProductDto;
-import com.tamerb.ecommerce.model.Category;
-import com.tamerb.ecommerce.model.Product;
+import com.tamerb.ecommerce.business.dto.ProductDto;
+import com.tamerb.ecommerce.entities.Category;
+import com.tamerb.ecommerce.entities.Product;
 import com.tamerb.ecommerce.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 

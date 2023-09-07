@@ -1,8 +1,8 @@
 package com.tamerb.ecommerce.controllers;
 
 import com.tamerb.ecommerce.config.ApiResponse;
-import com.tamerb.ecommerce.model.Category;
-import com.tamerb.ecommerce.service.CategoryService;
+import com.tamerb.ecommerce.entities.Category;
+import com.tamerb.ecommerce.business.services.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

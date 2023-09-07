@@ -1,4 +1,4 @@
-package com.tamerb.ecommerce.model;
+package com.tamerb.ecommerce.entities;
 
 
 import jakarta.persistence.*;
