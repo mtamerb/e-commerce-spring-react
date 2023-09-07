@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 export const commerceslice = createSlice({
   name: "commerce",
-  initialState: {},
+  initialState: {
+    products: [],
+  },
   reducers: {},
 });
 //export const {} = commerceslice.actions;
