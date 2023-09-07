@@ -5,7 +5,7 @@ import Signin from "./Auth/Signin.jsx";
 import Categories from "./admin/Categories.jsx";
 import Admin from "./Auth/Admin.jsx";
 import AdminMain from "./admin/AdminMain.jsx";
-//import PrivateAdmin from "./admin/PrivateAdmin.jsx";
+import PrivateAdmin from "./admin/PrivateAdmin.jsx";
 import Register from "./Auth/Register.jsx";
 import Users from "./admin/Users.jsx";
 import About from "./components/About.jsx";
@@ -20,7 +20,14 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="signin" element={<Signin />} />
         <Route path="/admin" element={<Admin />}></Route>
-        <Route path="/adminmain" element={<AdminMain />}>
+        <Route
+          path="/adminmain"
+          element={
+            <PrivateAdmin>
+              <AdminMain />
+            </PrivateAdmin>
+          }
+        >
           <Route path="users" element={<Users />} />
           <Route path="categories" element={<Categories />} />
         </Route>

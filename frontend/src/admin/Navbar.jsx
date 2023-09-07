@@ -1,4 +1,4 @@
-import { TbMessages } from "react-icons/tb";
+import { AiOutlineMail } from "react-icons/ai";
 import { Link } from "react-router-dom";
 function Navbar() {
   return (
@@ -37,7 +37,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <a className="nav-link text-info" aria-disabled="true">
-                <TbMessages />
+                <AiOutlineMail />
               </a>
             </li>
           </ul>
