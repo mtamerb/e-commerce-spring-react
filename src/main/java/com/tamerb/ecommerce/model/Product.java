@@ -15,7 +15,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long id;
 
     private @NotNull String name;
 
@@ -30,8 +30,7 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     Category category;
 
-    public Product(Long productId, String name, String imageUrl, double price, String description, Category category) {
-        this.productId = productId;
+    public Product(String name, String imageUrl, double price, String description, Category category) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.price = price;

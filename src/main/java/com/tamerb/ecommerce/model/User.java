@@ -28,7 +28,7 @@ public class User {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private Long userId;
+    private Long id;
 
     public User(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
