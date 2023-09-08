@@ -7,7 +7,6 @@ import com.tamerb.ecommerce.business.services.UserService;
 import com.tamerb.ecommerce.entities.User;
 import com.tamerb.ecommerce.exception.ResourceBadRequestException;
 import com.tamerb.ecommerce.security.WebSecurityConfig;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
