@@ -1,8 +1,12 @@
 function ProductCard({ product }) {
-  console.log(product.avatar);
   return (
     <div className="card m-4" style={{ width: "20rem" }}>
-      <img src={product.imageUrl} className="w-100 h-50" alt="..." />
+      <div className="d-flex justify-content-center align-items-center">
+        <img
+          src={product.imageUrl}
+          style={{ width: "300px", height: "300px" }}
+        ></img>
+      </div>
       <div className="card-body"></div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">{product.name}</li>

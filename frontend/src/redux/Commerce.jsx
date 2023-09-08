@@ -3,6 +3,7 @@ export const commerceslice = createSlice({
   name: "commerce",
   initialState: {
     products: [],
+    baskets: [],
   },
   reducers: {},
 });
