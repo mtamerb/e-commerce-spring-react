@@ -1,3 +1,4 @@
+import "./sass/app.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist//js/bootstrap.bundle.js";
 import Main from "./components/Main.jsx";

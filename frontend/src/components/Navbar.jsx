@@ -59,8 +59,16 @@ function Routebuttons() {
                 </li>
               </ul>
             </li>
-            <li className="nav-item dropdown">
-              <SlBasket className="text-info w-100 h-100 " />
+            <li
+              className="nav-item dropdown"
+              style={{ height: "40px", width: "40px" }}
+            >
+              <Link to="/" className="position-relative">
+                <SlBasket className="text-info w-100 h-100 " />
+                <span className="badge badge-pill badge-success position-absolute  text-info sticky-top">
+                  0
+                </span>
+              </Link>
             </li>
           </ul>
           {hesap ? (
