@@ -1,10 +1,10 @@
 function ProductCard({ product }) {
   return (
-    <div className="card m-4" style={{ width: "20rem" }}>
+    <div className="card m-1 mt-4 me-2" style={{ width: "20rem" }}>
       <div className="d-flex justify-content-center align-items-center">
         <img
           src={product.imageUrl}
-          style={{ width: "300px", height: "300px" }}
+          style={{ width: "200px", height: "200px" }}
         ></img>
       </div>
       <div className="card-body"></div>
