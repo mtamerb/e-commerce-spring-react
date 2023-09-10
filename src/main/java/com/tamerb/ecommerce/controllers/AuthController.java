@@ -1,5 +1,7 @@
 package com.tamerb.ecommerce.controllers;
 
+import com.tamerb.ecommerce.business.services.impl.UserServiceImpl;
+import com.tamerb.ecommerce.config.ApiResponse;
 import com.tamerb.ecommerce.response.AuthResponse;
 import com.tamerb.ecommerce.request.LoginRequest;
 import com.tamerb.ecommerce.request.SignUpRequest;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +24,7 @@ import java.util.Optional;
 @RequestMapping("auth")
 public class AuthController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
@@ -47,6 +50,13 @@ public class AuthController {
         User user = userService.saveUser(createUser(signUpRequest));
         return new AuthResponse(user.getId(), user.getName(), user.getRole());
     }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok(new ApiResponse(true, "User deleted successfully"));
+    }
+
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {

@@ -19,7 +19,7 @@ public interface UserService {
 
    User saveUser(User user);
 
-   void deleteUser(User user);
+   void deleteUser(Long id);
 
    Optional<User> validUsernameAndPassword(String username, String password);
 }
