@@ -21,10 +21,5 @@ public class SwaggerConfig {
                         .description("e-Commerce repository")
                         .url("https://github.com/mtamerb"));
     }
-
-
-
-
-
 }
 
