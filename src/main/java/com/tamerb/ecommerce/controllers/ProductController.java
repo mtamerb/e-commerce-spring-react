@@ -31,11 +31,11 @@ public class ProductController {
     public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
         if (optionalCategory.isEmpty()) {
-            return new ResponseEntity<>(new ApiResponse("Category is invalid", false), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new ApiResponse(false, "Category is invalid"), HttpStatus.CONFLICT);
         }
         Category category = optionalCategory.get();
         productService.addProduct(productDto, category);
-        return new ResponseEntity<>(new ApiResponse("Product added successfully", true), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponse(true, "Product added successfully"), HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
@@ -49,11 +49,11 @@ public class ProductController {
                                                      @RequestBody @Valid ProductDto productDto) {
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
         if (optionalCategory.isEmpty()) {
-            return new ResponseEntity<>(new ApiResponse("Category is invalid", false), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new ApiResponse(false, "Category is invalid"), HttpStatus.CONFLICT);
         }
         Category category = optionalCategory.get();
         productService.updateProduct(productId, productDto, category);
-        return new ResponseEntity<>(new ApiResponse("Product updated successfully", true), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
 
     }
 
