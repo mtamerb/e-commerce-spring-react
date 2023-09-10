@@ -1,6 +1,5 @@
 package com.tamerb.ecommerce.business.services;
 
-import com.tamerb.ecommerce.business.dto.UserDto;
 import com.tamerb.ecommerce.entities.User;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.tamerb.ecommerce.controllers;
 
-import com.tamerb.ecommerce.business.dto.AuthResponse;
-import com.tamerb.ecommerce.business.dto.LoginRequest;
-import com.tamerb.ecommerce.business.dto.SignUpRequest;
+import com.tamerb.ecommerce.response.AuthResponse;
+import com.tamerb.ecommerce.request.LoginRequest;
+import com.tamerb.ecommerce.request.SignUpRequest;
 import com.tamerb.ecommerce.business.services.UserService;
 import com.tamerb.ecommerce.entities.User;
 import com.tamerb.ecommerce.exception.ResourceBadRequestException;

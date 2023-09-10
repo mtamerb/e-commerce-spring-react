@@ -1,4 +1,4 @@
-package com.tamerb.ecommerce.business.dto;
+package com.tamerb.ecommerce.response;
 
 public record AuthResponse(Long id, String name, String role) {
 }
