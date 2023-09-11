@@ -64,13 +64,4 @@ public class AuthController {
         return ResponseEntity.ok(userList);
     }
 
-    private User createUser(SignUpRequest signUpRequest) {
-        User user = new User();
-        user.setUsername(signUpRequest.getUsername());
-        user.setPassword(signUpRequest.getPassword());
-        user.setName(signUpRequest.getName());
-        user.setEmail(signUpRequest.getEmail());
-        user.setRole(WebSecurityConfig.USER);
-        return user;
-    }
-}
+   }
