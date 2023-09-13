@@ -1,25 +1,22 @@
 package com.tamerb.ecommerce.business.services;
 
 import com.tamerb.ecommerce.entities.User;
+import com.tamerb.ecommerce.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface UserService {
+@Service
+@RequiredArgsConstructor
+public class UserService {
 
-   List<User> getUsers();
+    private final UserRepository userRepository;
 
-   Optional<User> getUserByUsername(String username);
+    public List<User> listAllUser(){
+        List<User> list = userRepository.findAll();
+        return list;
+    }
 
-   boolean hasUserWithUsername(String username);
-
-   boolean hasUserWithEmail(String email);
-
-   User validateAndGetUserByUsername(String username);
-
-   User saveUser(User user);
-
-   void deleteUser(Long id);
-
-   Optional<User> validUsernameAndPassword(String username, String password);
 }
