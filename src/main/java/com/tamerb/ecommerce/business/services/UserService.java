@@ -4,7 +4,6 @@ import com.tamerb.ecommerce.entities.User;
 import com.tamerb.ecommerce.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -17,6 +16,10 @@ public class UserService {
     public List<User> listAllUser(){
         List<User> list = userRepository.findAll();
         return list;
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
     }
 
 }
