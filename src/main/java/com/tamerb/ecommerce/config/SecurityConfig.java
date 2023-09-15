@@ -1,11 +1,8 @@
 package com.tamerb.ecommerce.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Role;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,10 +25,9 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/sign-in", "/auth/sign-up", "/api/users/**").permitAll()
-                        .requestMatchers("/api/**").hasRole("ADMIN")
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/auth/sign-in", "/auth/sign-up", "/api/users/**").permitAll()
+                        .requestMatchers("/admin/**").permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
