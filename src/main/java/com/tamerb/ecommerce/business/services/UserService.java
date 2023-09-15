@@ -14,12 +14,14 @@ public class UserService {
     private final UserRepository userRepository;
 
     public List<User> listAllUser(){
-        List<User> list = userRepository.findAll();
-        return list;
+        return userRepository.findAll();
     }
 
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
 
+    public void deleteAllUser() {
+        userRepository.deleteAll();
+    }
 }
