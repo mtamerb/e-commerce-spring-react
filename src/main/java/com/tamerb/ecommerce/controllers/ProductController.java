@@ -45,14 +45,14 @@ public class ProductController {
     }
 
     @PostMapping("/update/{productID}")
-    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productId") Long productId,
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable Long productID,
                                                      @RequestBody @Valid ProductDto productDto) {
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
         if (optionalCategory.isEmpty()) {
             return new ResponseEntity<>(new ApiResponse(false, "Category is invalid"), HttpStatus.CONFLICT);
         }
         Category category = optionalCategory.get();
-        productService.updateProduct(productId, productDto, category);
+        productService.updateProduct(productID, productDto, category);
         return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
 
     }
