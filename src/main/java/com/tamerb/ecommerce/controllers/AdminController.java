@@ -44,36 +44,7 @@ public class AdminController {
     }
 
 
-    // CATEGORY
 
-
-    @PostMapping("/category/create")
-    public ResponseEntity<ApiResponse> createCategory(@Valid @RequestBody Category category) {
-        if (Objects.nonNull(categoryService.readCategory(category.getCategoryName()))) {
-            return new ResponseEntity<>(new ApiResponse(false, "Category already exists"), HttpStatus.CONFLICT);
-        }
-        categoryService.createCategory(category);
-        return new ResponseEntity<>(new ApiResponse(true, "Category created successfully"), HttpStatus.CREATED);
-    }
-
-    @GetMapping("/category/list")
-    public ResponseEntity<List<Category>> getCategories() {
-        List<Category> body = categoryService.listCategories();
-        return new ResponseEntity<>(body, HttpStatus.OK);
-    }
-
-    @PostMapping("/category/update/{categoryID}")
-    public ResponseEntity<ApiResponse> updateCategory(@PathVariable("categoryID") Long categoryID, @Valid @RequestBody Category category) {
-        if (Objects.nonNull(categoryService.readCategory(categoryID))) {
-            categoryService.updateCategory(categoryID, category);
-            return new ResponseEntity<>(new ApiResponse(true, "Category updated successfully"), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(new ApiResponse(false, "Category not found"), HttpStatus.NOT_FOUND);
-
-    }
-
-
-    // PRODUCT
 
 
 }
