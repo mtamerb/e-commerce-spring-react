@@ -26,6 +26,8 @@ public class Product {
 
     private @NotNull String description;
 
+    private @NotNull Long categoryID;
+
     @JsonIgnore
     @JoinColumn(name = "category_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
