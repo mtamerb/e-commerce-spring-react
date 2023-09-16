@@ -5,12 +5,14 @@ import com.tamerb.ecommerce.business.dto.ProductDto;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.business.services.CategoryService;
 import com.tamerb.ecommerce.business.services.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -27,34 +29,43 @@ public class ProductController {
         this.categoryService = categoryService;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
-        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
-        if (optionalCategory.isEmpty()) {
-            return new ResponseEntity<>(new ApiResponse(false, "Category is invalid"), HttpStatus.CONFLICT);
-        }
-        Category category = optionalCategory.get();
-        productService.addProduct(productDto, category);
-        return new ResponseEntity<>(new ApiResponse(true, "Product added successfully"), HttpStatus.CREATED);
-    }
-
-    @GetMapping("/list")
+    @Operation(summary = "Get all products")
+    @GetMapping("")
     public ResponseEntity<List<ProductDto>> getProducts() {
         List<ProductDto> productDtos = productService.listProducts();
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
 
-    @PostMapping("/update/{productID}")
-    public ResponseEntity<ApiResponse> updateProduct(@PathVariable Long productID,
-                                                     @RequestBody @Valid ProductDto productDto) {
-        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getProductId());
-        if (optionalCategory.isEmpty()) {
-            return new ResponseEntity<>(new ApiResponse(false, "Category is invalid"), HttpStatus.CONFLICT);
+    @Operation(summary = "Create a product")
+    @PostMapping("{categoryID}")
+    public ResponseEntity<ApiResponse> createProduct(@PathVariable("categoryID") Long categoryID, @Valid @RequestBody ProductDto productDto) {
+        Optional<Category> optionalCategory = categoryService.readCategory(categoryID);
+        if (optionalCategory.isPresent()) {
+            Category category = optionalCategory.get();
+            productService.createProduct(productDto, category);
+            return new ResponseEntity<>(new ApiResponse(true, "Product created successfully"), HttpStatus.CREATED);
         }
-        Category category = optionalCategory.get();
-        productService.updateProduct(productID, productDto, category);
-        return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(false, "Category not found"), HttpStatus.NOT_FOUND);
+    }
 
+    @Operation(summary = "Delete a product by ID")
+    @DeleteMapping("/{productID}")
+    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable("productID") Long productID) {
+        if (Objects.nonNull(productService.readProduct(productID))) {
+            productService.deleteProduct(productID);
+            return new ResponseEntity<>(new ApiResponse(true, "Product deleted successfully"), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ApiResponse(false, "Product not found"), HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "Delete All products")
+    @DeleteMapping("")
+    public ResponseEntity<ApiResponse> deleteAll() {
+        if (Objects.nonNull(productService.listProducts())) {
+            productService.deleteAllProduct();
+            return new ResponseEntity<>(new ApiResponse(true, "Product deleted successfully"), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ApiResponse(false, "Products empty"), HttpStatus.NOT_FOUND);
     }
 
 }
