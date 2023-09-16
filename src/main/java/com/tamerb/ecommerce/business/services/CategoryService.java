@@ -44,4 +44,13 @@ public class CategoryService {
             throw new IllegalArgumentException("No category found with the specified categoryID.");
         }
     }
+
+    public void deleteCategory(Long id) {
+        categoryRepository.deleteById(id);
+    }
+
+    public void deleteAllCategory() {
+        categoryRepository.deleteAll();
+    }
+
 }
