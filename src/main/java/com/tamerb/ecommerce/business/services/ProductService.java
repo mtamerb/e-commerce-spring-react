@@ -7,7 +7,6 @@ import com.tamerb.ecommerce.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -20,13 +19,8 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductDto> listProducts() {
-        List<Product> products = productRepository.findAll();
-        List<ProductDto> productDtos = new ArrayList<>();
-        for (Product product : products) {
-            productDtos.add(new ProductDto(product));
-        }
-        return productDtos;
+    public List<Product> listProducts() {
+        return productRepository.findAll();
     }
 
     public void deleteProduct(Long id) {
@@ -48,6 +42,7 @@ public class ProductService {
         product.setDescription(productDto.getDescription());
         product.setPrice(productDto.getPrice());
         product.setImageUrl(productDto.getImageURL());
+        product.setCategoryID(category.getId());
         product.setCategory(category);
         productRepository.save(product);
     }
@@ -60,7 +55,7 @@ public class ProductService {
             product.setPrice(productDto.getPrice());
             product.setImageUrl(productDto.getImageURL());
             productRepository.save(product);
-        }else {
+        } else {
             log.error("Product not found with id: " + productID + " to update");
         }
     }
