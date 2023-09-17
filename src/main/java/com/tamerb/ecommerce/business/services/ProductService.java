@@ -4,11 +4,13 @@ import com.tamerb.ecommerce.business.dto.ProductDto;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.entities.Product;
 import com.tamerb.ecommerce.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class ProductService {
 
@@ -17,8 +19,6 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
-
 
     public List<ProductDto> listProducts() {
         List<Product> products = productRepository.findAll();
@@ -50,5 +50,18 @@ public class ProductService {
         product.setImageUrl(productDto.getImageURL());
         product.setCategory(category);
         productRepository.save(product);
+    }
+
+    public void updateProduct(Long productID, ProductDto productDto) {
+        Product product = productRepository.findById(productID).orElse(null);
+        if (product != null) {
+            product.setName(productDto.getName());
+            product.setDescription(productDto.getDescription());
+            product.setPrice(productDto.getPrice());
+            product.setImageUrl(productDto.getImageURL());
+            productRepository.save(product);
+        }else {
+            log.error("Product not found with id: " + productID + " to update");
+        }
     }
 }

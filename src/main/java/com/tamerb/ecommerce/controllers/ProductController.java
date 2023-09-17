@@ -31,7 +31,7 @@ public class ProductController {
 
     @Operation(summary = "Get all products")
     @GetMapping("")
-    public ResponseEntity<List<ProductDto>> getProducts() {
+    public ResponseEntity<List<ProductDto>> listProducts() {
         List<ProductDto> productDtos = productService.listProducts();
         return new ResponseEntity<>(productDtos, HttpStatus.OK);
     }
@@ -46,6 +46,16 @@ public class ProductController {
             return new ResponseEntity<>(new ApiResponse(true, "Product created successfully"), HttpStatus.CREATED);
         }
         return new ResponseEntity<>(new ApiResponse(false, "Category not found"), HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "Update a product by ID")
+    @PutMapping("/{productID}")
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productID") Long productID, @Valid @RequestBody ProductDto productDto) {
+       if(Objects.nonNull(productService.readProduct(productID))){
+           productService.updateProduct(productID, productDto);
+           return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
+       }
+        return new ResponseEntity<>(new ApiResponse(false, "Product not found"), HttpStatus.NOT_FOUND);
     }
 
     @Operation(summary = "Delete a product by ID")
