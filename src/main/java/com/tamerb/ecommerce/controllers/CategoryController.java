@@ -1,5 +1,6 @@
 package com.tamerb.ecommerce.controllers;
 
+import com.tamerb.ecommerce.business.dto.CategoryDto;
 import com.tamerb.ecommerce.config.ApiResponse;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.business.services.CategoryService;
@@ -24,11 +25,11 @@ public class CategoryController {
 
     @Operation(summary = "Create a category")
     @PostMapping("")
-    public ResponseEntity<ApiResponse> createCategory(@Valid @RequestBody Category category) {
-        if (Objects.nonNull(categoryService.readCategory(category.getCategoryName()))) {
+    public ResponseEntity<ApiResponse> createCategory(@Valid @RequestBody CategoryDto categoryDto) {
+        if (Objects.nonNull(categoryService.readCategory(categoryDto.getCategoryName()))) {
             return new ResponseEntity<>(new ApiResponse(false, "Category already exists"), HttpStatus.CONFLICT);
         }
-        categoryService.createCategory(category);
+        categoryService.createCategory(categoryDto);
         return new ResponseEntity<>(new ApiResponse(true, "Category created successfully"), HttpStatus.CREATED);
     }
 
@@ -41,9 +42,10 @@ public class CategoryController {
 
     @Operation(summary = "Update a category by ID")
     @PutMapping("/{categoryID}")
-    public ResponseEntity<ApiResponse> updateCategory(@PathVariable("categoryID") Long categoryID, @Valid @RequestBody Category category) {
+    public ResponseEntity<ApiResponse> updateCategory(@PathVariable("categoryID") Long categoryID,
+                                                      @Valid @RequestBody CategoryDto categoryDto) {
         if (Objects.nonNull(categoryService.readCategory(categoryID))) {
-            categoryService.updateCategory(categoryID, category);
+            categoryService.updateCategory(categoryID, categoryDto);
             return new ResponseEntity<>(new ApiResponse(true, "Category updated successfully"), HttpStatus.OK);
         }
         return new ResponseEntity<>(new ApiResponse(false, "Category not found"), HttpStatus.NOT_FOUND);

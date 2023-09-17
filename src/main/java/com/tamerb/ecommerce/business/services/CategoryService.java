@@ -1,5 +1,6 @@
 package com.tamerb.ecommerce.business.services;
 
+import com.tamerb.ecommerce.business.dto.CategoryDto;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,9 @@ public class CategoryService {
         return categoryRepository.findByCategoryName(categoryName);
     }
 
-    public void createCategory(Category category) {
+    public void createCategory(CategoryDto categoryDto) {
+        Category category = new Category();
+        category.setCategoryName(categoryDto.getCategoryName());
         categoryRepository.save(category);
     }
 
@@ -32,13 +35,13 @@ public class CategoryService {
         return categoryRepository.findById(categoryID);
     }
 
-    public void updateCategory(Long categoryID, Category newCategory) {
+    public void updateCategory(Long categoryID, CategoryDto categoryDto) {
         Optional<Category> optionalCategory = categoryRepository.findById(categoryID);
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
-            category.setCategoryName(newCategory.getCategoryName());
-            category.setDescription(newCategory.getDescription());
-            category.setImageUrl(newCategory.getImageUrl());
+            category.setCategoryName(categoryDto.getCategoryName());
+            category.setDescription(categoryDto.getDescription());
+            category.setImageUrl(categoryDto.getImageUrl());
             categoryRepository.save(category);
         } else {
             throw new IllegalArgumentException("No category found with the specified categoryID.");
