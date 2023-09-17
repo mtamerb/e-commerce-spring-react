@@ -5,6 +5,7 @@ import com.tamerb.ecommerce.business.dto.ProductDto;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.business.services.CategoryService;
 import com.tamerb.ecommerce.business.services.ProductService;
+import com.tamerb.ecommerce.entities.Product;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +32,8 @@ public class ProductController {
 
     @Operation(summary = "Get all products")
     @GetMapping("")
-    public ResponseEntity<List<ProductDto>> listProducts() {
-        List<ProductDto> productDtos = productService.listProducts();
-        return new ResponseEntity<>(productDtos, HttpStatus.OK);
+    public ResponseEntity<List<Product>> listProducts() {
+        return new ResponseEntity<>(productService.listProducts(), HttpStatus.OK);
     }
 
     @Operation(summary = "Create a product")
@@ -49,12 +49,12 @@ public class ProductController {
     }
 
     @Operation(summary = "Update a product by ID")
-    @PutMapping("/{productID}")
+    @PutMapping("{productID}")
     public ResponseEntity<ApiResponse> updateProduct(@PathVariable("productID") Long productID, @Valid @RequestBody ProductDto productDto) {
-       if(Objects.nonNull(productService.readProduct(productID))){
-           productService.updateProduct(productID, productDto);
-           return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
-       }
+        if (Objects.nonNull(productService.readProduct(productID))) {
+            productService.updateProduct(productID, productDto);
+            return new ResponseEntity<>(new ApiResponse(true, "Product updated successfully"), HttpStatus.OK);
+        }
         return new ResponseEntity<>(new ApiResponse(false, "Product not found"), HttpStatus.NOT_FOUND);
     }
 
