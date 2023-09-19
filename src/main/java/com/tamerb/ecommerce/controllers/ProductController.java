@@ -1,6 +1,6 @@
 package com.tamerb.ecommerce.controllers;
 
-import com.tamerb.ecommerce.config.ApiResponse;
+import com.tamerb.ecommerce.common.ApiResponse;
 import com.tamerb.ecommerce.business.dto.ProductDto;
 import com.tamerb.ecommerce.entities.Category;
 import com.tamerb.ecommerce.business.services.CategoryService;

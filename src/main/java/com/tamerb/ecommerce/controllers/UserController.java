@@ -1,7 +1,7 @@
 package com.tamerb.ecommerce.controllers;
 
 import com.tamerb.ecommerce.business.services.UserService;
-import com.tamerb.ecommerce.config.ApiResponse;
+import com.tamerb.ecommerce.common.ApiResponse;
 import com.tamerb.ecommerce.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
