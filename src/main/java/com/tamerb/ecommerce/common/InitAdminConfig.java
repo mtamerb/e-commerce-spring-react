@@ -1,4 +1,4 @@
-package com.tamerb.ecommerce.config;
+package com.tamerb.ecommerce.common;
 
 import com.tamerb.ecommerce.entities.User;
 import com.tamerb.ecommerce.enums.Role;
