@@ -3,6 +3,8 @@ import { AiOutlineUser, AiOutlineMail, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { typChange, registerSchema } from "../schema/signRegister";
 import { useFormik } from "formik";
+import { Link } from 'react-router-dom';
+
 function Register() {
   const {
     values,
@@ -71,9 +73,8 @@ function Register() {
               id="username"
               type="text"
               name="username"
-              className={`form-control ${
-                errors.username ? "border border-danger border-3" : ""
-              }`}
+              className={`form-control ${errors.username ? "border border-danger border-3" : ""
+                }`}
               value={values.username}
               required
               onChange={handleChange}
@@ -88,9 +89,8 @@ function Register() {
               id="email"
               type="email"
               name="email"
-              className={`form-control ${
-                errors.email ? "border border-danger border-3" : ""
-              }`}
+              className={`form-control ${errors.email ? "border border-danger border-3" : ""
+                }`}
               required
               value={values.email}
               onChange={handleChange}
@@ -105,9 +105,8 @@ function Register() {
               id="password"
               type="password"
               name="password"
-              className={`form-control ${
-                errors.password ? "border border-danger border-3" : ""
-              }`}
+              className={`form-control ${errors.password ? "border border-danger border-3" : ""
+                }`}
               required
               value={values.password}
               onChange={handleChange}
@@ -141,6 +140,11 @@ function Register() {
             >
               Create Account
             </button>
+          </div>
+          <div className="link-sign">
+            <Link to="/Signin">
+              <button type="button">Already registered? Sign in.</button>
+            </Link>
           </div>
         </form>
       </article>
