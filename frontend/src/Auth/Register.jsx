@@ -3,7 +3,7 @@ import { AiOutlineUser, AiOutlineMail, AiOutlineEye } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { typChange, registerSchema } from "../schema/signRegister";
 import { useFormik } from "formik";
-function Registor() {
+function Register() {
   const {
     values,
     errors,
@@ -148,4 +148,4 @@ function Registor() {
   );
 }
 
-export default Registor;
+export default Register;
