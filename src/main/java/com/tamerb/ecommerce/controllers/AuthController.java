@@ -1,9 +1,9 @@
 package com.tamerb.ecommerce.controllers;
 
 import com.tamerb.ecommerce.auth.request.LoginRequest;
-import com.tamerb.ecommerce.auth.service.AuthenticationService;
 import com.tamerb.ecommerce.auth.response.AuthResponse;
 import com.tamerb.ecommerce.auth.request.SignUpRequest;
+import com.tamerb.ecommerce.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class AuthController {
 
 
-    private final AuthenticationService authenticationService;
+    private final AuthService authenticationService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/sign-up")
@@ -28,7 +28,7 @@ public class AuthController {
 
     @PostMapping("/sign-in")
     public ResponseEntity<AuthResponse> signin(@Valid @RequestBody LoginRequest loginRequest) {
-        return ResponseEntity.ok(authenticationService.signin(loginRequest));
+        return ResponseEntity.ok(authenticationService.login(loginRequest));
     }
 
 }

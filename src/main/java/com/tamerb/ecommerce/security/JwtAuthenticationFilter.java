@@ -1,14 +1,11 @@
-package com.tamerb.ecommerce.config;
+package com.tamerb.ecommerce.security;
 
-import com.tamerb.ecommerce.business.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.logging.Level;
+
 
 @Slf4j
 @Component
@@ -29,34 +26,27 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
 
-        final String header = request.getHeader("Authorization");
-        final String jwt;
-        final String username;
+        final String authHeader = request.getHeader("Authorization");
 
-        /*if (!request.isSecure()) {
-            log.error("Error: Insecure connection used.");
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Secure connection required.");
-            return;
-        }*/
-
-        if (header == null || !header.startsWith("Bearer ")) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        jwt = header.substring(7);
-        username = jwtService.findUsername(jwt);
+        final String jwt = authHeader.substring(7);
+        final String userEmail = jwtService.extractUserName(jwt);
 
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             try {
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
 
-                if (jwtService.tokenControl(jwt, userDetails)) {
+                if (jwtService.isTokenValid(jwt, userDetails)) {
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -76,3 +66,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+
