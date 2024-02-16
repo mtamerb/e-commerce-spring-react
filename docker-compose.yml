@@ -1,7 +1,7 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  db_e_commerce:
+  db_ecommerce:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: postgres
@@ -12,12 +12,12 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
-  app_e_commerce:
+  app_ecommerce:
     build: .
     ports:
       - "8081:8080"
     depends_on:
-      - db_e_commerce
+      - db_ecommerce
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/e-commerce-db
       SPRING_DATASOURCE_USERNAME: postgres

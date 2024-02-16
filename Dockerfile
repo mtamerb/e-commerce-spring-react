@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM amazoncorretto:17-alpine-jdk
 
 ARG JAR_FILE=target/*.jar
 
